@@ -2,46 +2,46 @@ from flask import Flask
 
 app = Flask(__name__)
 
-
 @app.route('/sumar/<int:num1>/<int:num2>')
 def sumar(num1, num2):
     resultado = num1 + num2
-    return f'El resultado de la suma de {num1} y {num2} es: {resultado}'
-
+    return f'El resultado de la suma de {num1} y {num2} es: {resultado}<br><br><footer>Brisa Rangel Palacios 5-D</footer>'
 
 @app.route('/restar/<int:num1>/<int:num2>')
 def restar(num1, num2):
     resultado = num1 - num2
-    return f'El resultado de la resta de {num1} y {num2} es: {resultado}'
-
+    return f'El resultado de la resta de {num1} y {num2} es: {resultado}<br><br><footer>Brisa Rangel Palacios 5-D</footer>'
 
 @app.route('/multiplicar/<int:num1>/<int:num2>')
 def multiplicar(num1, num2):
     resultado = num1 * num2
-    return f'El resultado de la multiplicación de {num1} y {num2} es: {resultado}'
-
+    return f'El resultado de la multiplicación de {num1} y {num2} es: {resultado}<br><br><footer>Brisa Rangel Palacios 5-D</footer>'
 
 @app.route('/dividir/<int:num1>/<int:num2>')
 def dividir(num1, num2):
     if num2 == 0:
-        return 'Error: No se puede dividir por cero.'
+        return 'Error: No se puede dividir por cero.<br><br><footer>Brisa Rangel Palacios 5-D</footer>'
     resultado = num1 / num2
-    return f'El resultado de la división de {num1} y {num2} es: {resultado}'
+    return f'El resultado de la división de {num1} y {num2} es: {resultado}<br><br><footer>Brisa Rangel Palacios 5-D</footer>'
 
+@app.route('/max/<int:num1>/<int:num2>')
+def maximo(num1, num2):
+    resultado = max(num1, num2)
+    return f'El número mayor entre {num1} y {num2} es: {resultado}<br><br><footer>Brisa Rangel Palacios 5-D</footer>'
 
 @app.route('/')
 def index():
     return '''
         <h1>Bienvenidos a mi calculadora desde Python</h1>
+        <p>Para obtener el número máximo de dos valores escribe en el navegador: 
+        <code>127.0.0.1:5000/max/10/20</code></p>
         <p>Para sumar dos números, ingresa: <a href="/sumar/10/20">Sumar 10 y 20</a></p>
         <p>Para restar dos números, ingresa: <a href="/restar/10/20">Restar 10 y 20</a></p>
         <p>Para multiplicar dos números, ingresa: <a href="/multiplicar/10/20">Multiplicar 10 y 20</a></p>
         <p>Para dividir dos números, ingresa: <a href="/dividir/10/20">Dividir 10 entre 20</a></p>
+        <br><br>
+        <footer>Brisa Rangel Palacios 5-D</footer>
     '''
 
-    
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-    
